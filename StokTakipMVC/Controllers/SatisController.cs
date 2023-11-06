@@ -14,6 +14,24 @@ namespace StokTakipMVC.Controllers
         {
             var values = db.TBLSATISLAR.ToList();
             return View(values);
+           
+        }
+
+
+
+        [HttpGet]
+        public ActionResult NewSatis()
+        {
+            return View();
+        }
+
+
+        [HttpPost]
+        public ActionResult NewSatis(TBLSATISLAR s1)
+        {
+            db.TBLSATISLAR.Add(s1);
+            db.SaveChanges();
+            return View("Index");
         }
     }
 }

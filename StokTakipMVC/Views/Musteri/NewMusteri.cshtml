@@ -1,4 +1,4 @@
-﻿
+﻿@model StokTakipMVC.Modals.Entity.TBLMUSTERILER
 @{
     ViewBag.Title = "NewMusteri";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
@@ -11,11 +11,19 @@
 <form class="form-group" method="post">
 
     <label>Müşteri Ad:</label>
-    <input type="text" name="MUSTERIAD" placeholder="Müşteri adı girin..." class="form-control" />
+    @Html.TextBoxFor(m => m.MUSTERIAD, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.MUSTERIAD, "", new { @style = "color:blue" })
     <br />
-    <label>Müşteri Soyad:</label>
-    <input type="text" name="MUSTERISOYAD" placeholder="Müşteri soyadı girin..." class="form-control" />
-    <br />
-    <button class="btn btn-primary">Müşteri Ekle</button>
 
+    <label>Müşteri Ad:</label>
+    @Html.TextBoxFor(m => m.MUSTERISOYAD, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.MUSTERISOYAD, "", new { @style = "color:blue" })
+    <br />
+    <a href="/Musteri/Index/" class="btn btn-danger">İptal</a>
+    <button class="btn btn-primary" id="btn1">Müşteri Ekle</button>
+    <script>
+        $('#btn1').click(function () {
+            alert("Yeni müşteri eklendi...");
+        });
+    </script>
 </form>

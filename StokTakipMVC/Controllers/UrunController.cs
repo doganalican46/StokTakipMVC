@@ -34,6 +34,7 @@ namespace StokTakipMVC.Controllers
         [HttpPost]
         public ActionResult NewUrun(TBLURUNLER u1)
         {
+     
             var kategori = db.TBLKATEGORILER.Where(m => m.KATEGORIID == u1.TBLKATEGORILER.KATEGORIID).FirstOrDefault();
             u1.TBLKATEGORILER = kategori;
             db.TBLURUNLER.Add(u1);
@@ -54,14 +55,28 @@ namespace StokTakipMVC.Controllers
         public ActionResult UrunGetir(int id)
         {
             var urun = db.TBLURUNLER.Find(id);
+            List<SelectListItem> values = (from x in db.TBLKATEGORILER.ToList()
+                                           select new SelectListItem
+                                           {
+                                               Text = x.KATEGORIAD,
+                                               Value = x.KATEGORIID.ToString()
+                                           }).ToList();
+            ViewBag.kategoriler = values;
             return View("UrunGetir", urun);
 
         }
 
         public ActionResult Guncelle(TBLURUNLER u1)
         {
-            var kategori = db.TBLKATEGORILER.Find(u1.KATEGORIID);
-            kategori.KATEGORIAD = u1.KATEGORIAD;
+            var urun = db.TBLURUNLER.Find(u1.URUNID);
+            
+            urun.URUNAD = u1.URUNAD;
+            urun.MARKA = u1.MARKA;
+            //urun.URUNKATEGORI = u1.URUNKATEGORI;
+            urun.FIYAT = u1.FIYAT;
+            urun.STOK = u1.STOK;
+            var kategori = db.TBLKATEGORILER.Where(m => m.KATEGORIID == u1.TBLKATEGORILER.KATEGORIID).FirstOrDefault();
+            urun.URUNKATEGORI = kategori.KATEGORIID;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

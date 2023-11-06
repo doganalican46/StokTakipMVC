@@ -1,0 +1,42 @@
+﻿@model StokTakipMVC.Modals.Entity.TBLSATISLAR
+
+@{
+    ViewBag.Title = "NewSatis";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2>Yeni Satış Yap</h2>
+    </div>
+    <form class="form-group" method="post">
+
+        <div class="card-body">
+
+            <label>Ürün Ad:</label>
+            <input type="text" name="URUN" placeholder="Ürün adı giriniz..." required="" class="form-control" maxlength="50" />
+            <br />
+            <label>Müşteri:</label>
+            <input type="text" name="MUSTERI" placeholder="Marka giriniz..." required="" class="form-control" maxlength="50" />
+            <br />
+            @*<label>Kategori:</label>*@
+            @*@Html.DropDownListFor(m => m.TBLKATEGORILER.KATEGORIID, (List<SelectListItem>)ViewBag.kategoriler, new { @class = "form-control" })*@
+           
+            <label>Adet:</label>
+            <input type="text" name="ADET" placeholder="Stok giriniz..." required="" class="form-control" />
+            <br />
+            <label>Fiyat:</label>
+            <input type="text" name="FIYAT" placeholder="Fiyat giriniz..." required="" class="form-control" />
+            <br />
+
+        </div>
+        <div class="card-footer">
+            <a href="/Satis/Index/" class="btn btn-danger">İptal</a>
+            <button class="btn btn-primary">Satış Yap</button>
+        </div>
+    </form>
+
+</div>
+
+
+

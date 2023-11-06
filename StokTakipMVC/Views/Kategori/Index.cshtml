@@ -1,35 +1,47 @@
 ﻿@using StokTakipMVC.Modals.Entity
-
 @model List<TBLKATEGORILER>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
 
-<h2>KATEGORİLER</h2>
-<br />
-<br />
+<div class="card">
+    <div class="card-header">
 
-<table class="table table-bordered table-hover">
-    <tr>
-        <th>ID</th>
-        <th>AD</th>
-        <th>İŞLEM</th>
-    </tr>
-    @foreach (var x in Model)
-    {
-        <tr>
-            <td>@x.KATEGORIID</td>
-            <td>@x.KATEGORIAD</td>
-            <td>
-                <a href="/Kategori/Delete/@x.KATEGORIID" class="btn btn-danger">SİL</a>
-                <a href="/Kategori/KategoriGetir/@x.KATEGORIID" class="btn btn-success">GÜNCELLE</a>
-            </td>
-        </tr>
-    }
-</table>
+    </div>
+    <div class="card-body">
 
-<br />
-<br />
+    </div>
+    <div class="card-footer">
 
-<a href="/Kategori/NewKategori/" class="btn btn-primary">Yeni Kategori Ekle</a>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">
+        <h2>KATEGORİLER</h2>
+    </div>
+    <div class="card-body">
+        <table class="table table-bordered table-hover">
+            <tr>
+                <th>ID</th>
+                <th>AD</th>
+                <th>İŞLEM</th>
+            </tr>
+            @foreach (var x in Model)
+            {
+                <tr>
+                    <td>@x.KATEGORIID</td>
+                    <td>@x.KATEGORIAD</td>
+                    <td>
+                        @Html.ActionLink("SİL", "Sil", new { id = x.KATEGORIID }, new { @class = "btn btn-danger", onclick = "return confirm('Gerçekten silmek istiyor musunuz?')" })
+                        <a href="/Kategori/KategoriGetir/@x.KATEGORIID" class="btn btn-success">GÜNCELLE</a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+    <div class="card-footer">
+        <a href="/Kategori/NewKategori/" class="btn btn-primary">Yeni Kategori Ekle</a>
+    </div>
+</div>

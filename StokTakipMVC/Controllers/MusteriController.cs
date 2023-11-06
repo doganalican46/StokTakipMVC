@@ -10,10 +10,16 @@ namespace StokTakipMVC.Controllers
     {
         MVCDBSTOKEntities1 db = new MVCDBSTOKEntities1();
         // GET: Musteri
-        public ActionResult Index()
+        public ActionResult Index(string p)
         {
-            var values = db.TBLMUSTERILER.ToList();
-            return View(values);
+            var degerler = from d in db.TBLMUSTERILER select d;
+            if (!string.IsNullOrEmpty(p))
+            {
+                degerler = degerler.Where(m => m.MUSTERIAD.Contains(p));
+            }
+            return View(degerler.ToList());
+            //var values = db.TBLMUSTERILER.ToList();
+            //return View(values);
         }
 
         [HttpGet]
@@ -25,6 +31,10 @@ namespace StokTakipMVC.Controllers
         [HttpPost]
         public ActionResult NewMusteri(TBLMUSTERILER m1)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("NewMusteri");
+            }
             db.TBLMUSTERILER.Add(m1);
             db.SaveChanges();
             return RedirectToAction("Index/");

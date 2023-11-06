@@ -9,17 +9,26 @@
 @using (Html.BeginForm("Guncelle", "Urun", FormMethod.Post))
 {
     <div class="form-group">
-        @Html.HiddenFor(m => m.MUSTERIID, new { @class = "form-control" })
+        @Html.HiddenFor(m => m.URUNID, new { @class = "form-control" })
+        <br />
+        @Html.Label("ÜRÜN AD:")
+        @Html.TextBoxFor(m => m.URUNAD, new { @class = "form-control" })
+        <br />
+        @Html.Label("MARKA:")
+        @Html.TextBoxFor(m => m.MARKA, new { @class = "form-control" })
+        <br />
+        @Html.Label("KATEGORİ:")
+        @Html.DropDownListFor(m => m.TBLKATEGORILER.KATEGORIID, (List<SelectListItem>)ViewBag.kategoriler, new { @class = "form-control" })
+        <BR />
+        @Html.Label("FİYAT:")
+        @Html.TextBoxFor(m => m.FIYAT, new { @class = "form-control" })
+        <br />
+        @Html.Label("STOK:")
+        @Html.TextBoxFor(m => m.STOK, new { @class = "form-control" })
+        <br />
 
-        <br />
-        @Html.Label("MÜŞTERİ AD:")
-        @Html.TextBoxFor(m => m.MUSTERIAD, new { @class = "form-control" })
-        <br />
-        @Html.Label("MÜŞTERİ SOYAD:")
-        @Html.TextBoxFor(m => m.MUSTERISOYAD, new { @class = "form-control" })
-        <br />
     </div>
-    <a href="/Musteri/Index/" class="btn btn-danger">İptal</a>
+    <a href="/Urun/Index/" class="btn btn-danger">İptal</a>
     <button class="btn btn-primary">Güncelle</button>
 }
 

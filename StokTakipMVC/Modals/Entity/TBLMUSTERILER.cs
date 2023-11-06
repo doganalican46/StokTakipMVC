@@ -11,7 +11,8 @@ namespace StokTakipMVC.Modals.Entity
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class TBLMUSTERILER
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,11 +20,20 @@ namespace StokTakipMVC.Modals.Entity
         {
             this.TBLSATISLAR = new HashSet<TBLSATISLAR>();
         }
-    
+
         public int MUSTERIID { get; set; }
+
+
+        [Required(ErrorMessage = "Müþteri Adý Boþ Geçilemez!")]
+        [StringLength(50,ErrorMessage ="En fazla 50 karakter girebilirsiniz!")]
         public string MUSTERIAD { get; set; }
+
+
+
+        [Required(ErrorMessage = "Müþteri Soyadý Boþ Geçilemez!")]
+        [StringLength(50, ErrorMessage = "En fazla 50 karakter girebilirsiniz!")]
         public string MUSTERISOYAD { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TBLSATISLAR> TBLSATISLAR { get; set; }
     }

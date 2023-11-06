@@ -1,4 +1,4 @@
-﻿
+﻿@model StokTakipMVC.Modals.Entity.TBLKATEGORILER
 @{
     ViewBag.Title = "NewKategori";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
@@ -10,10 +10,12 @@
 
 <form class="form-group" method="post">
 
-        <label>Kategori Ad:</label>
-        <input type="text" name="KATEGORIAD" placeholder="Kategori adı girin..." class="form-control" />
-  
-        <br />
-        <button class="btn btn-primary">Kategori Ekle</button>
-    
+    <label>Kategori Ad:</label>
+    @Html.TextBoxFor(m => m.KATEGORIAD, new { @class = "form-control" })
+    @Html.ValidationMessageFor(m => m.KATEGORIAD, "", new { @style = "color:blue" })
+    <br />
+    <a href="/Kategori/Index/" class="btn btn-danger">İptal</a>
+
+    <button class="btn btn-primary">Kategori Ekle</button>
+
 </form>

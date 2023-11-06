@@ -29,13 +29,17 @@ namespace StokTakipMVC.Controllers
         [HttpPost]
         public ActionResult NewKategori(TBLKATEGORILER k1)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("NewKategori");
+            }
             db.TBLKATEGORILER.Add(k1);
             db.SaveChanges();
-            return RedirectToAction("Index/");
+            return RedirectToAction("Index");
         }
 
 
-        public ActionResult Delete(int id)
+        public ActionResult Sil(int id)
         {
 
             var kategori = db.TBLKATEGORILER.Find(id);

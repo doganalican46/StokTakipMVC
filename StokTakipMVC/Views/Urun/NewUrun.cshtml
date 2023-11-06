@@ -4,27 +4,35 @@
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
 
-<h2>Yeni Ürün Ekle</h2>
+<div class="card">
+    <div class="card-header">
+        <h2>Yeni Ürün Ekle</h2>
+    </div>
+    <form class="form-group" method="post">
+        <div class="card-body">
+            <label>Ürün Ad:</label>
+            <input type="text" name="URUNAD" placeholder="Ürün adı giriniz..." required="" class="form-control" maxlength="50" />
+            <br />
+            <label>Marka:</label>
+            <input type="text" name="MARKA" placeholder="Marka giriniz..." required="" class="form-control" maxlength="50" />
+            <br />
+            <label>Kategori:</label>
+            <br />
+            <label>Fiyat:</label>
+            <input type="text" name="FIYAT" placeholder="Fiyat giriniz..." required="" class="form-control" />
+            <br />
+            <label>Stok:</label>
+            <input type="text" name="STOK" placeholder="Stok giriniz..." required="" class="form-control" />
+            <br />
+        </div>
+        <div class="card-footer">
+            <a href="/Urun/Index/" class="btn btn-danger">İptal</a>
+            <button class="btn btn-primary">Ürün Ekle</button>
+        </div>
+    </form>
+</div>
+
 <br />
 <br />
 
-<form class="form-group" method="post">
 
-    <label>Ürün Ad:</label>
-    <input type="text" name="URUNAD" placeholder="Ürün adı girin..." class="form-control" />
-    <br />
-    <label>Marka:</label>
-    <input type="text" name="MARKA" placeholder="Marka girin..." class="form-control" />
-    <br />
-    <label>Kategori:</label>
-    @Html.DropDownListFor(m => m.TBLKATEGORILER.KATEGORIID, (List<SelectListItem>)ViewBag.kategoriler, new { @class = "form-control" })
-    <br />
-    <label>Fiyat:</label>
-    <input type="text" name="FIYAT" placeholder="Fiyat girin..." class="form-control" />
-    <br />
-    <label>Stok:</label>
-    <input type="text" name="STOK" placeholder="Stok girin..." class="form-control" />
-    <br />
-    <button class="btn btn-primary">Ürün Ekle</button>
-
-</form>

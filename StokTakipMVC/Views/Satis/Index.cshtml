@@ -5,36 +5,38 @@
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
 
-<h2>SATIŞLAR</h2>
-<br />
-<br />
-
-<table class="table table-bordered table-hover">
-    <tr>
-        <th>ID</th>
-        <th>ÜRÜN</th>
-        <th>MÜŞTERİ</th>
-        <th>ADET</th>
-        <th>FİYAT</th>
-        <th>İŞLEMLER</th>
-    </tr>
-    @foreach (var x in Model)
-    {
-        <tr>
-            <td>@x.SATISID</td>
-            <td>@x.URUN</td>
-            <td>@x.MUSTERI</td>
-            <td>@x.ADET</td>
-            <td>@x.FIYAT</td>
-            <td>
-                <a href="/Satis/Sil/" class="btn btn-danger">SİL</a>
-                <a href="/Satis/Guncelle/" class="btn btn-success">GÜNCELLE</a>
-            </td>
-        </tr>
-    }
-</table>
-
-<br />
-<br />
-
-<a href="/Satis/Ekle/" class="btn btn-primary">Yeni Satış Ekle</a>
+<div class="card">
+    <div class="card-header">
+        <h2>SATIŞLAR</h2>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover">
+                <tr>
+                    <th>ID</th>
+                    <th>ÜRÜN AD</th>
+                    <th>MÜŞTERİ</th>
+                    <th>ADET</th>
+                    <th>FİYAT</th>
+                    <th>İŞLEMLER</th>
+                </tr>
+                @foreach (var x in Model)
+                {
+                    <tr>
+                        <td>@x.SATISID</td>
+                        <td>@x.TBLURUNLER.URUNAD</td>
+                        <td>@x.TBLMUSTERILER.MUSTERIAD @x.TBLMUSTERILER.MUSTERISOYAD</td>
+                        <td>@x.ADET</td>
+                        <td>@x.FIYAT ₺</td>
+                        <td>
+                            <a href="/Satis/SatisDetay/@x.SATISID" class="btn btn-success">Detay Gör</a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+    <div class="card-footer">
+        <a href="/Satis/NewSatis/" class="btn btn-primary">Yeni Satış Yap</a>
+    </div>
+</div>
