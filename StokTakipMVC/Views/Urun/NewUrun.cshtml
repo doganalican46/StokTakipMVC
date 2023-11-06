@@ -1,0 +1,30 @@
+﻿@model StokTakipMVC.Modals.Entity.TBLURUNLER
+@{
+    ViewBag.Title = "NewUrun";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>Yeni Ürün Ekle</h2>
+<br />
+<br />
+
+<form class="form-group" method="post">
+
+    <label>Ürün Ad:</label>
+    <input type="text" name="URUNAD" placeholder="Ürün adı girin..." class="form-control" />
+    <br />
+    <label>Marka:</label>
+    <input type="text" name="MARKA" placeholder="Marka girin..." class="form-control" />
+    <br />
+    <label>Kategori:</label>
+    @Html.DropDownListFor(m => m.TBLKATEGORILER.KATEGORIID, (List<SelectListItem>)ViewBag.kategoriler, new { @class = "form-control" })
+    <br />
+    <label>Fiyat:</label>
+    <input type="text" name="FIYAT" placeholder="Fiyat girin..." class="form-control" />
+    <br />
+    <label>Stok:</label>
+    <input type="text" name="STOK" placeholder="Stok girin..." class="form-control" />
+    <br />
+    <button class="btn btn-primary">Ürün Ekle</button>
+
+</form>

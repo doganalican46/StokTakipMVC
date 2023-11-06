@@ -1,0 +1,34 @@
+﻿@using StokTakipMVC.Modals.Entity
+@model List<TBLMUSTERILER>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>MÜŞTERİLER</h2>
+<br />
+<br />
+
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>ID</th>
+        <th>AD-SOYAD</th>
+        <th>İŞLEM</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.MUSTERIID</td>
+            <td>@x.MUSTERIAD @x.MUSTERISOYAD</td>
+            <td>
+                <a href="/Musteri/Sil/@x.MUSTERIID" class="btn btn-danger">SİL</a>
+                <a href="/Musteri/MusteriGetir/@x.MUSTERIID" class="btn btn-success">GÜNCELLE</a>
+            </td>
+        </tr>
+    }
+</table>
+
+<br />
+<br />
+
+<a href="/Musteri/NewMusteri/" class="btn btn-primary">Yeni Müşteri Ekle</a>

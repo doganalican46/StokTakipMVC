@@ -1,0 +1,41 @@
+﻿@using StokTakipMVC.Modals.Entity
+@model List<TBLURUNLER>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>ÜRÜNLER</h2>
+<br />
+<br />
+
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>ID</th>
+        <th>ÜRÜN AD</th>
+        <th>MARKA</th>
+        <th>KATEGORİ</th>
+        <th>FİYAT</th>
+        <th>STOK</th>
+        <th>İŞLEMLER</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.URUNID</td>
+            <td>@x.URUNAD</td>
+            <td>@x.MARKA</td>
+            <td>@(x.TBLKATEGORILER != null ? x.TBLKATEGORILER.KATEGORIAD : "Kategori Bulunamadı")</td>
+            <td>@x.FIYAT ₺</td>
+            <td>@x.STOK</td>
+            <td>
+                <a href="/Urun/Sil/@x.URUNID" class="btn btn-danger">SİL</a>
+                <a href="/Urun/UrunGetir/@x.URUNID" class="btn btn-success">GÜNCELLE</a>
+            </td>
+        </tr>
+    }
+</table>
+<br />
+<br />
+
+<a href="/Urun/NewUrun/" class="btn btn-primary">Yeni Ürün Ekle</a>

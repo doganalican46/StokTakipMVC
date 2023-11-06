@@ -1,0 +1,35 @@
+﻿@using StokTakipMVC.Modals.Entity
+
+@model List<TBLKATEGORILER>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<h2>KATEGORİLER</h2>
+<br />
+<br />
+
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>ID</th>
+        <th>AD</th>
+        <th>İŞLEM</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.KATEGORIID</td>
+            <td>@x.KATEGORIAD</td>
+            <td>
+                <a href="/Kategori/Delete/@x.KATEGORIID" class="btn btn-danger">SİL</a>
+                <a href="/Kategori/KategoriGetir/@x.KATEGORIID" class="btn btn-success">GÜNCELLE</a>
+            </td>
+        </tr>
+    }
+</table>
+
+<br />
+<br />
+
+<a href="/Kategori/NewKategori/" class="btn btn-primary">Yeni Kategori Ekle</a>
